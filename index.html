@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AMNAY - Bientôt Disponible</title>
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-    
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <script>
@@ -29,78 +32,162 @@
             }
         }
     </script>
-    
+
     <style>
         /* Animation d'apparition douce */
         .fade-in-up {
             animation: fadeInUp 1.5s ease-out forwards;
             opacity: 0;
         }
+
         @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-        
+
         /* Fond très sombre, désaturé pour garantir le noir et blanc */
         .bg-monochrome {
             background-image: linear-gradient(to bottom, rgba(5, 5, 5, 0.95), rgba(5, 5, 5, 0.9)), url('https://images.unsplash.com/photo-1492562080023-ab3db95bfbce?q=80&w=2048&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             /* Force l'image de fond en noir et blanc si elle a de la couleur */
-            filter: grayscale(100%); 
+            filter: grayscale(100%);
+            /* Fixer le fond pour qu'il soit statique même en scrollant (optionnel) */
+            background-attachment: fixed;
         }
-        
+
         /* Placeholder pour le logo (à supprimer quand vous aurez votre image) */
         .logo-placeholder {
-            border: 1px dashed rgba(255,255,255,0.3);
-            background: rgba(255,255,255,0.05);
+            border: 1px dashed rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* --- Style Split Text/Dual Tone --- */
+        .split-text-container {
+            position: relative;
+            line-height: 1.2;
+        }
+
+        .split-text-top {
+            color: white;
+            clip-path: inset(0 0 50% 0);
+            z-index: 20;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            pointer-events: none;
+            transition: transform 0.8s ease-out;
+        }
+
+        .split-text-bottom {
+            color: #a0a0a0;
+            clip-path: inset(50% 0 0 0);
+            z-index: 10;
+            transition: transform 0.8s ease-out;
+        }
+
+        /* Animation au survol du conteneur (main) */
+        .split-text-container:hover .split-text-top {
+            transform: translateY(-5px);
+        }
+
+        .split-text-container:hover .split-text-bottom {
+            transform: translateY(5px);
         }
     </style>
 </head>
-<body class="bg-monochrome text-white h-screen flex flex-col justify-between items-center overflow-hidden font-sans">
+
+<body class="bg-monochrome text-white min-h-screen flex flex-col justify-between items-center font-sans">
 
     <header class="w-full pt-12 pb-6 flex justify-center fade-in-up">
         <div class="logo-placeholder h-24 w-48 flex items-center justify-center">
-            <img src="logo-amay.png" alt="">
+            <!-- <span class="text-white text-xl font-serif">AMNAY</span> -->
+            <img src="./logo-amay.png" alt="Loge">
         </div>
-        </header>
+    </header>
 
-    <main class="flex-grow flex flex-col justify-center items-center text-center px-6 fade-in-up" style="animation-delay: 0.3s;">
-        
+    <main class="flex-grow flex flex-col justify-center items-center text-center px-6 fade-in-up"
+        style="animation-delay: 0.3s;">
+
         <h1 class="text-luxury-light-grey tracking-[0.3em] uppercase text-sm md:text-base mb-4 font-semibold">
-            Amnay - Collection Homme
+            Votre nouvelle signature de luxe.
         </h1>
-        
-        <h2 class="text-4xl md:text-7xl font-serif font-bold mb-6 leading-tight text-white">
-            Le raffinement<br>se réinvente.
-        </h2>
-        
+
+        <div class="split-text-container mb-6">
+            <h2 class="text-4xl md:text-7xl font-serif font-bold leading-tight">
+                <span class="split-text-top">Le raffinement<br>se réinvente.</span>
+                <span class="split-text-bottom block">Le raffinement<br>se réinvente.</span>
+            </h2>
+        </div>
+
         <p class="text-gray-300 max-w-md text-lg md:text-xl font-light mb-12 leading-relaxed">
-            Une nouvelle expérience du luxe masculin est en cours de création. Patience.
+            Élégance, audace et tradition. Découvrez l'univers Amnay :
         </p>
 
         <div class="w-24 h-[1px] bg-white/40 mb-12"></div>
 
-        <div class="flex flex-col sm:flex-row gap-5 w-full max-w-md justify-center items-center">
-            
-            <a href="https://wa.me/212666951812" target="_blank" class="group w-full sm:w-auto flex items-center justify-center gap-3 border-2 border-white px-8 py-4 hover:bg-white hover:text-luxury-black transition-all duration-500">
-                <i class="fab fa-whatsapp text-xl"></i>
-                <span class="uppercase tracking-widest text-sm font-bold">Contact</span>
-            </a>
+        <div class="flex flex-col sm:flex-row gap-8 w-full max-w-2xl justify-center items-start">
 
-            <a href="https://www.instagram.com/amnay.men/" target="_blank" class="group w-full sm:w-auto flex items-center justify-center gap-3 border-2 border-white/30 px-8 py-4 hover:border-white hover:bg-white/10 transition-all duration-500">
-                <i class="fab fa-instagram text-xl"></i>
-                <span class="uppercase tracking-widest text-sm font-bold">Instagram</span>
-            </a>
+            <div class="w-full sm:w-1/2 flex flex-col items-center">
+                <p
+                    class="text-white tracking-widest uppercase text-lg font-bold mb-4 border-b border-luxury-light-grey/50 pb-2">
+                    Collection Homme</p>
+                <p class="text-sm text-gray-400 mb-4 italic">
+                    L'excellence du style masculin.
+                </p>
+                <a href="https://www.instagram.com/amnay.men/" target="_blank"
+                    class="w-full flex items-center justify-center gap-3 border-2 border-white/30 px-6 py-3 hover:border-white hover:bg-white/10 transition-all duration-500">
+                    <i class="fab fa-instagram text-xl"></i>
+                    <span class="uppercase tracking-widest text-sm font-bold">@amnay.men</span>
+                </a>
+            </div>
+
+            <div class="hidden sm:block w-[1px] h-32 bg-white/40"></div>
+
+            <div class="w-full sm:w-1/2 flex flex-col items-center">
+                <p
+                    class="text-white tracking-widest uppercase text-lg font-bold mb-4 border-b border-luxury-light-grey/50 pb-2">
+                    Collection Femme</p>
+                <p class="text-sm text-gray-400 mb-4 italic">
+                    Élégance et modernité féminine.
+                </p>
+                <a href="https://www.instagram.com/amnay.woman/" target="_blank"
+                    class="w-full flex items-center justify-center gap-3 border-2 border-white/30 px-6 py-3 hover:border-white hover:bg-white/10 transition-all duration-500">
+                    <i class="fab fa-instagram text-xl"></i>
+                    <span class="uppercase tracking-widest text-sm font-bold">@amnay.woman</span>
+                </a>
+            </div>
 
         </div>
     </main>
 
     <footer class="w-full p-8 text-center fade-in-up" style="animation-delay: 0.8s;">
+
+        <div class="flex flex-col gap-4 mb-6">
+
+            <a href="https://wa.me/212660304053" target="_blank"
+                class="text-white hover:text-green-500 transition-colors flex items-center justify-center gap-3">
+                <i class="fab fa-whatsapp text-2xl"></i>
+                <span class="text-md font-sans font-medium uppercase tracking-wider">Contactez-nous sur WhatsApp : +212
+                    660-304053</span>
+            </a>
+
+        </div>
+
         <p class="text-luxury-light-grey text-xs tracking-[0.2em] uppercase font-light">
-            &copy; 2025 Amnay. Luxe Masculin.
+            &copy; 2025 Amnay. Luxe Marocain.
         </p>
+
     </footer>
 
 </body>
+
 </html>
